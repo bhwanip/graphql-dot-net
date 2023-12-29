@@ -1,5 +1,12 @@
 # GraphQL Demo (.NET)
 
+# Commands
+
+```
+dotnet build
+dotnet run --launch-profile GraphQLDemo.API
+```
+
 # Data Setup
 
 ```
