@@ -1,7 +1,0 @@
-﻿mutation CreateCourse($courseInput: CourseTypeInput) {
-	createCourse(courseInput: $courseInput) {
-		id
-		name
-		subject
-	}
-}

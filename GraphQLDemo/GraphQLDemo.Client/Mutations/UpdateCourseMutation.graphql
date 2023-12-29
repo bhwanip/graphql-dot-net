@@ -1,7 +1,0 @@
-﻿mutation UpdateCourse($id: Uuid!, $courseInput: CourseTypeInput) {
-	updateCourse(courseInput: $courseInput, id: $id) {
-		id
-		name
-		subject
-	}
-}
