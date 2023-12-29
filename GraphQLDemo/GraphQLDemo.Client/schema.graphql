@@ -1,0 +1,65 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Query {
+  courses: [CourseType]
+  courseById(id: Uuid!): CourseType
+  instructions: String @deprecated(reason: "This query is deprecated.")
+}
+
+type Mutation {
+  createCourse(courseInput: CourseTypeInput): CourseResult
+  updateCourse(id: Uuid! courseInput: CourseTypeInput): CourseResult
+  deleteCourse(id: Uuid!): Boolean!
+}
+
+type Subscription {
+  courseCreated: CourseResult
+  courseUpdated(courseId: Uuid!): CourseResult
+}
+
+type CourseResult {
+  id: Uuid!
+  name: String
+  subject: Subject!
+  instructorId: Uuid!
+}
+
+scalar Uuid
+
+type CourseType {
+  id: Uuid!
+  name: String
+  subject: Subject!
+  instructor: InstructorType!
+  students: [StudentType]
+}
+
+input CourseTypeInput {
+  name: String
+  subject: Subject!
+  instructorId: Uuid!
+}
+
+type StudentType {
+  id: Uuid!
+  firstName: String
+  lastName: String
+  gpa: Float!
+}
+
+type InstructorType {
+  id: Uuid!
+  firstName: String
+  lastName: String
+  salary: Float!
+}
+
+enum Subject {
+  MATHEMATICS
+  SCIENCE
+  HISTORY
+}
